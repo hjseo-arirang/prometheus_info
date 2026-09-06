@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MV 프로메테우스 | 극지 크루즈 승선 안내 가이드</title>
+  <meta name="description" content="특별 기획: 극지 해식 동굴 탐사 크루즈 공식 승선 가이드 및 항해 일정">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    :root {
+      --bg-base: #060913;
+      --bg-surface: #0c1427;
+      --bg-card: rgba(16, 26, 51, 0.75);
+      --border-subtle: rgba(56, 189, 248, 0.18);
+      --border-strong: rgba(56, 189, 248, 0.45);
+      --primary: #38bdf8;
+      --primary-hover: #7dd3fc;
+      --primary-dim: rgba(56, 189, 248, 0.12);
+      --text-main: #f1f5f9;
+      --text-sub: #94a3b8;
+      --text-muted: #64748b;
+      --accent-danger: #f43f5e;
+      --accent-danger-bg: rgba(244, 63, 94, 0.12);
+      --accent-gold: #fbbf24;
+      --accent-gold-bg: rgba(251, 191, 36, 0.12);
+      --accent-cyan-glow: 0 0 20px rgba(56, 189, 248, 0.25);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.65;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(14, 116, 144, 0.22) 0%, transparent 65%),
+        radial-gradient(circle at 10% 30%, rgba(2, 132, 199, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.06) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    /* 레이더 스캔라인 효과 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.6;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--primary-hover);
+    }
+
+    /* 헤더 섹션 */
+    .hero-header {
+      position: relative;
+      padding: 70px 20px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-subtle);
+      background: linear-gradient(180deg, rgba(12, 20, 39, 0.9) 0%, rgba(6, 9, 19, 0.95) 100%);
+      overflow: hidden;
+    }
+
+    .hero-bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.22;
+      filter: blur(2px) grayscale(40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .ship-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .ship-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.8);
+      }
+    }
+
+    .main-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      color: #ffffff;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .main-title span {
+      background: linear-gradient(135deg, #ffffff 40%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sub-title {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      font-weight: 400;
+      max-width: 620px;
+      margin: 0 auto;
+      word-break: keep-all;
+    }
+
+    /* 탭 네비게이션 */
+    .nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 9, 19, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-sub);
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .nav-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-btn.active {
+      color: var(--primary);
+      background: var(--primary-dim);
+      border-color: var(--border-strong);
+      box-shadow: var(--accent-cyan-glow);
+    }
+
+    /* 메인 콘텐츠 영역 */
+    .content-container {
+      max-width: 1040px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+    }
+
+    .tab-section {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .tab-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 카드 스타일 */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* 기밀/마스킹 스타일 (■■■) */
+    .redacted {
+      background-color: #0b0f19;
+      color: var(--accent-danger);
+      font-family: "Courier New", monospace;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 3px;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      display: inline-block;
+      letter-spacing: 1px;
+      cursor: not-allowed;
+      user-select: none;
+      box-shadow: inset 0 0 6px rgba(244, 63, 94, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .redacted:hover {
+      border-color: var(--accent-danger);
+      background-color: rgba(244, 63, 94, 0.15);
+      text-shadow: 0 0 8px var(--accent-danger);
+    }
+
+    /* 경고/공지 블록 (콜아웃) */
+    .callout {
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .callout-warning {
+      background: var(--accent-danger-bg);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      color: #fecdd3;
+    }
+
+    .callout-info {
+      background: var(--primary-dim);
+      border: 1px solid var(--border-strong);
+      color: #e0f2fe;
+    }
+
+    .callout-gold {
+      background: var(--accent-gold-bg);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      color: #fef08a;
+    }
+
+    .callout-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    /* 캘린더 스타일 */
+    .calendar-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 20px 0;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: rgba(10, 16, 31, 0.9);
+    }
+
+    .calendar-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      text-align: center;
+    }
+
+    .calendar-table th {
+      background: rgba(16, 26, 51, 0.8);
+      color: var(--primary);
+      padding: 14px 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-bottom: 2px solid var(--border-subtle);
+      letter-spacing: 1px;
+    }
+
+    .calendar-table th.sun {
+      color: #f87171;
+    }
+
+    .calendar-table th.sat {
+      color: #60a5fa;
+    }
+
+    .calendar-table td {
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      height: 98px;
+      vertical-align: top;
+      padding: 8px 6px;
+      font-size: 0.85rem;
+      background: rgba(12, 20, 39, 0.4);
+      transition: background 0.15s ease;
+    }
+
+    .calendar-table td:hover {
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .calendar-table td.empty-day {
+      background: rgba(5, 8, 16, 0.6);
+    }
+
+    .date-num {
+      font-family: "Courier New", monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      display: block;
+      margin-bottom: 6px;
+      text-align: left;
+      padding-left: 4px;
+    }
+
+    .date-event {
+      display: block;
+      border-radius: 4px;
+      padding: 4px 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      margin-bottom: 4px;
+      word-break: keep-all;
+    }
+
+    .event-start {
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid var(--primary);
+      color: #e0f2fe;
+    }
+
+    .event-sail {
+      background: rgba(251, 191, 36, 0.2);
+      border: 1px solid var(--accent-gold);
+      color: #fef08a;
+      font-weight: 700;
+    }
+
+    .event-official {
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #7dd3fc;
+    }
+
+    .event-final {
+      background: rgba(244, 63, 94, 0.25);
+      border: 1px solid var(--accent-danger);
+      color: #fecdd3;
+      font-weight: 700;
+    }
+
+    /* 선박 스펙 목록 */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .spec-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+
+    .spec-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .spec-val {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* 이미지 프리뷰 카드 */
+    .image-hero-card {
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      background: #000;
+    }
+
+    .image-hero-card img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .image-hero-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .image-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(6, 9, 19, 0.95) 0%, transparent 100%);
+      padding: 30px 24px 16px;
+      color: var(--text-sub);
+      font-size: 0.9rem;
+    }
+
+    .image-caption strong {
+      color: #fff;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* 규칙 리스트 */
+    .rule-box {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--primary);
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .rule-title {
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    /* 푸터 */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(6, 9, 19, 0.95);
+      padding: 40px 20px 60px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-mascot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .mascot-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--primary);
+      background: var(--bg-surface);
+      object-fit: cover;
+    }
+
+    .mascot-text {
+      text-align: left;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .mascot-text strong {
+      color: var(--primary);
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .hero-header {
+        padding: 50px 16px 30px;
+      }
+
+      .main-title {
+        font-size: 1.85rem;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .calendar-table td {
+        height: 80px;
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 헤더 영역 -->
+  <header class="hero-header">
+    <img src="resource/cruise_ship.png" alt="MV Prometheus cruise ship"
+      class="hero-bg-image" onerror="this.style.display='none'">
+    <div class="hero-container">
+      <div class="ship-badge">Official Cruise Guide • 2026</div>
+      <h1 class="main-title"><span>프로메테우스</span></h1>
+      <p class="sub-title">특별 기획 : 극지 해식 동굴 탐사 크루즈 공식 승선 안내 가이드</p>
+    </div>
+  </header>
+
+  <!-- 탭 네비게이션 -->
+  <nav class="nav-wrapper">
+    <div class="nav-container">
+      <button class="nav-btn active" onclick="switchTab('overview')">🧭 항해 개요</button>
+      <button class="nav-btn" onclick="switchTab('calendar')">📅 항해 일정표</button>
+      <button class="nav-btn" onclick="switchTab('system')">📱 선내 시스템 안내</button>
+      <button class="nav-btn" onclick="switchTab('rules')">📢 승선 수칙</button>
+    </div>
+  </nav>
+
+  <!-- 메인 콘텐츠 영역 -->
+  <main class="content-container">
+
+    <!-- 1. 항해 개요 탭 -->
+    <section id="tab-overview" class="tab-section active">
+      <div class="image-hero-card">
+        <img src="resource/cruise_ship.png" alt="프로메테우스 크루즈 전경"
+          onerror="this.style.display='none'">
+        <div class="image-caption">
+          <strong>프로메테우스</strong>
+          수천 년의 북극 파도가 깎아 만든 천연 해식 동굴로 향하는 잊지 못할 3주간의 항해
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">🚢 승선 환영의 말</h2>
+        </div>
+        <p style="margin-bottom: 14px;">
+          신사 숙녀 여러분, 안녕하십니까! <strong>‘초특가 해식 동굴 크루즈’</strong>에 오르신 것을 진심으로 환영합니다.
+        </p>
+        <p style="color: var(--text-sub);">
+          승객 여러분께서는 잊지 못할 바다 동굴의 장관을 관람하며, 여행을 함께할 소중한 인연들과 따뜻한 교류를 나누어 보시기 바랍니다.
+        </p>
+
+        <div class="callout callout-info" style="margin-top: 24px;">
+          <div class="callout-icon">ℹ️</div>
+          <div>
+            <strong>안내 사항:</strong> 극지 해역 특유의 거친 해류와 기상 상태로 인해 일부 통신이나 조타에 일시적인 흔들림이 있을 수 있으나 항해에는 지장이 없으니 안심하시기 바랍니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">🧭 크루즈 운항 제원</h2>
+        </div>
+        <div class="spec-grid">
+          <div class="spec-item">
+            <div class="spec-label">선박명</div>
+            <div class="spec-val">MV 프로메테우스 <span class="redacted" title="인가 필요">■■■■</span></div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">선박 등록 번호</div>
+            <div class="spec-val"><span class="redacted">■■■</span>-704-B</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">출항 일시</div>
+            <div class="spec-val">2026. 10. 02 (금) 21:00</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">항해 기간</div>
+            <div class="spec-val">약 3주 (10.02 ~ 10.23)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 항해 일정표 탭 -->
+    <section id="tab-calendar" class="tab-section">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">📅 2026년 9월 ~ 10월 항해 캘린더</h2>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">* 공식 일정이 없는 날은 선내 자율 교류 기간입니다.</span>
+        </div>
+
+        <div class="calendar-wrapper">
+          <table class="calendar-table">
+            <thead>
+              <tr>
+                <th class="sun">일 (SUN)</th>
+                <th>월 (MON)</th>
+                <th>화 (TUE)</th>
+                <th>수 (WED)</th>
+                <th>목 (THU)</th>
+                <th>금 (FRI)</th>
+                <th class="sat">토 (SAT)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 1주: 9/20 ~ 9/26 -->
+              <tr>
+                <td><span class="date-num">9/20</span></td>
+                <td>
+                  <span class="date-num">9/21</span>
+                  <span class="date-event event-start">📝 승선 명단<br>기록 시작</span>
+                </td>
+                <td><span class="date-num">9/22</span></td>
+                <td><span class="date-num">9/23</span></td>
+                <td><span class="date-num">9/24</span></td>
+                <td><span class="date-num">9/25</span></td>
+                <td><span class="date-num">9/26</span></td>
+              </tr>
+              <!-- 2주: 9/27 ~ 10/3 -->
+              <tr>
+                <td><span class="date-num">9/27</span></td>
+                <td><span class="date-num">9/28</span></td>
+                <td><span class="date-num">9/29</span></td>
+                <td>
+                  <span class="date-num">9/30</span>
+                  <span class="date-event event-start">📝 승선 명단<br>마감 (자정)</span>
+                </td>
+                <td>
+                  <span class="date-num">10/1</span>
+                  <span class="date-event event-start">🎫 승선 명단 공개<br>& 신분 증명</span>
+                </td>
+                <td>
+                  <span class="date-num">10/2</span>
+                  <span class="date-event event-sail">🚢 21:00 [출항]</span>
+                </td>
+                <td><span class="date-num">10/3</span></td>
+              </tr>
+              <!-- 3주: 10/4 ~ 10/10 -->
+              <tr>
+                <td>
+                  <span class="date-num">10/4</span>
+                  <span class="date-event event-official">21:30 [공식 항해 일정]</span>
+                </td>
+                <td><span class="date-num">10/5</span></td>
+                <td>
+                  <span class="date-num">10/6</span>
+                  <span class="date-event event-official">21:30 [공식 항해 일정]</span>
+                </td>
+                <td><span class="date-num">10/7</span></td>
+                <td>
+                  <span class="date-num">10/8</span>
+                  <span class="date-event event-official">21:30 [공식 항해 일정]</span>
+                </td>
+                <td>
+                  <span class="date-num">10/9</span>
+                  <span class="date-event event-official">21:30 [공식 항해 일정]</span>
+                </td>
+                <td>
+                  <span class="date-num">10/10</span>
+                  <span class="date-event event-official">21:30 [공식 항해 일정]</span>
+                </td>
+              </tr>
+              <!-- 4주: 10/11 ~ 10/17 -->
+              <tr>
+                <td><span class="date-num">10/11</span></td>
+                <td><span class="date-num">10/12</span></td>
+                <td>
+                  <span class="date-num">10/13</span>
+                  <span class="date-event event-official">21:30 [공식 항해 일정]</span>
+                </td>
+                <td><span class="date-num">10/14</span></td>
+                <td>
+                  <span class="date-num">10/15</span>
+                  <span class="date-event event-official">21:30 [공식 항해 일정]</span>
+                </td>
+                <td><span class="date-num">10/16</span></td>
+                <td>
+                  <span class="date-num">10/17</span>
+                  <span class="date-event event-official">21:30 [공식 항해 일정]</span>
+                </td>
+              </tr>
+              <!-- 5주: 10/18 ~ 10/24 -->
+              <tr>
+                <td><span class="date-num">10/18</span></td>
+                <td>
+                  <span class="date-num">10/19</span>
+                  <span class="date-event event-official">21:30 [공식 항해 일정]</span>
+                </td>
+                <td><span class="date-num">10/20</span></td>
+                <td>
+                  <span class="date-num">10/21</span>
+                  <span class="date-event event-official">21:30 [공식 항해 일정]</span>
+                </td>
+                <td><span class="date-num">10/22</span></td>
+                <td>
+                  <span class="date-num">10/23</span>
+                  <span class="date-event event-final">🎬 21:30 [마지막 항해]</span>
+                </td>
+                <td><span class="date-num">10/24</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-gold">
+          <div class="callout-icon">⏱️</div>
+          <div>
+            <strong>항해 일정 안내:</strong> 모든 공식 항해 일정은 <strong>밤 21:30</strong>에 진행됩니다.<br>
+            <span style="font-size: 0.88rem; color: #fde68a;">※ 당일 진행 상황 및 총괄 사정에 따라 시작 시간이 다소 변동될 수 있습니다.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 선내 시스템 안내 탭 (사전 공개본) -->
+    <section id="tab-system" class="tab-section">
+      <div class="callout callout-warning">
+        <div class="callout-icon">🔒</div>
+        <div>
+          <strong>[시스템 보안 알림]</strong><br>
+          본 안내서의 일부 항목은 탑승객 보안 유지 및 극적 몰입을 위해 <strong class="redacted">■■■</strong> 처리되어 있습니다.<br>
+          해당 항목들은 <strong style="color: #fff;">10월 ■일 [<span class="redacted">■■■■</span>]</strong> 시점에 시스템 잠금이 해제되며 전면
+          공개됩니다.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">1. 스토리 진행 및 조사 타임테이블 원칙</h2>
+        </div>
+        <p style="margin-bottom: 12px;">
+          본 커뮤니티는 긴 공백 없이 일정한 호흡을 유지하기 위해 <strong>주 3~4회(격일 간격) 밤 21:30에 스토리 및 실시간 조사 세션을 진행</strong>합니다.
+        </p>
+        <ul style="padding-left: 20px; color: var(--text-sub);">
+          <li style="margin-bottom: 6px;"><strong>공식 진행 시간:</strong> 지정된 일정일 밤 21:30 <em>(진행 상황에 따라 다소 변동 가능)</em></li>
+          <li><strong>진행 형태 [공식 항해 일정]:</strong> 달력에 표기된 날짜에 선내 안내 방송, 컷씬 지문 출력, 또는 실시간 조사 세션이 상황에 맞추어 진행됩니다.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">2. 조사(탐색) 시스템 안내</h2>
+        </div>
+        <p style="margin-bottom: 12px; color: var(--text-sub);">
+          • 조사는 달력에 지정된 [공식 항해 일정] 밤 21:30부터 실시간 세션으로 진행됩니다.<br>
+          • 조사 세션이 시작되면 선내의 특정 구역이 개방되며, 승객 여러분은 해당 구역을 탐색하여 선내에 흩어진 기록과 단서를 수색하게 됩니다.<br>
+          • 실시간 세션에 부득이하게 불참하더라도 획득된 단서는 기록되므로, 이후 다른 러너들과의 대화를 통해 얼마든지 내용을 공유받고 추리에 참여하실 수 있습니다.
+        </p>
+      </div>
+
+      <div class="card" style="border-color: rgba(244, 63, 94, 0.4);">
+        <div class="card-header">
+          <h2 class="card-title" style="color: var(--accent-danger);">3. [보안 인가 구역: <span class="redacted">■■■ ■■</span>
+            가이드]</h2>
+        </div>
+        <div class="callout callout-warning" style="margin-top: 0;">
+          <div class="callout-icon">⚠️</div>
+          <div>
+            <strong>데이터 잠김 (ACCESS RESTRICTED)</strong><br>
+            승객 여러분의 안전하고 편리한 항해를 위해 전원에게 <strong><span class="redacted">■■ ■■■ ■■■</span></strong>가 연동/지급될
+            예정입니다.<br>
+            상세 사용 방법은 <strong>10월 ■일 [<span class="redacted">■■■■</span>]</strong> 시점에 안내 링크와 함께 해금됩니다.
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <h3 style="font-size: 1rem; color: #fff; margin-bottom: 10px;">① <span class="redacted">■■■■■■</span> (DATA
+            ENCRYPTED)</h3>
+          <ul style="padding-left: 20px; color: var(--text-muted); line-height: 2;">
+            <li><strong>[<span class="redacted">■■■■■■</span>]:</strong> <span
+                class="redacted">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■</span></li>
+            <li><strong>[<span class="redacted">■■■■■■</span>]:</strong> <span
+                class="redacted">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■</span></li>
+            <li><strong>[<span class="redacted">■■■■■■</span>]:</strong> <span
+                class="redacted">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■</span></li>
+            <li><strong>[<span class="redacted">■■■■■■</span>]:</strong> <span
+                class="redacted">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■</span></li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <h3 style="font-size: 1rem; color: #fff; margin-bottom: 10px;">② 1주차 일상 기간의 목적</h3>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            10월 2일(금) 출항 후 1주일간의 '일상 기간' 동안에는 위험한 <span class="redacted">■■■</span>가 발생하지 않습니다. 승객 간의 선상 교류 및 준비된 시설을 이용하며, <strong
+              class="redacted">■■■■■■■■■■■■</strong>에 자연스럽게 적응할 수 있도록 지원할 예정입니다. 편안한 마음으로 일상을 즐겨주세요.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">4. [특이 사항: 심연의 속삭임]</h2>
+        </div>
+        <blockquote
+          style="border-left: 3px solid var(--accent-danger); padding-left: 14px; margin-bottom: 16px; font-style: italic; color: #fecdd3;">
+          "바다를 너무 오래 들여다보지 마십시오."
+        </blockquote>
+        <p style="color: var(--text-sub); margin-bottom: 12px;">
+          • 출항 이후 항해가 지속됨에 따라, 일부 승객에게서 설명할 수 없는 이상 감각, 불안, 혹은 '무언가에 스며드는 듯한' 변화가 감지될 수 있습니다.<br>
+          • 당신이 목격하는 것이 과연 온전한 현실인지, 아니면 차가운 안개가 빚어낸 허상인지 끊임없이 의심하십시오.<br>
+          • 승객 여러분의 정신적·심리적 상태는 <span class="redacted">■■■</span>를 통해 은밀하게 측정 및 기록됩니다. 이 징후가 임계점에 도달했을 때,
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. 승선 수칙 탭 -->
+    <section id="tab-rules" class="tab-section">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">1. 기본 안내 및 수위 등급</h2>
+        </div>
+        <div class="spec-grid" style="margin-bottom: 20px;">
+          <div class="spec-item">
+            <div class="spec-label">장르</div>
+            <div class="spec-val">스릴러 / 드라마</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">연령 등급</div>
+            <div class="spec-val">만 18세 이상 (성인 한정)</div>
+          </div>
+        </div>
+
+        <div class="callout callout-warning">
+          <div class="callout-icon">🚨</div>
+          <div>
+            <strong>트리거 워닝 (Trigger Warning):</strong><br>
+            본 커뮤니티는 <strong>밀실 고립, 조난, 시신의 변형, 갈등, 살인 및 유혈 묘사</strong>를 포함하고 있습니다.<br>
+            작중 전개에 따라 <strong>캐릭터가 불가해한 상황이나 상해 사건에 휘말릴 수 있습니다.</strong><br>
+            총괄진은 작중 등장하는 잔혹 행위 및 비도덕적 설정을 일절 옹호하지 않습니다. 현실과 가상을 명확히 구분해 주시기 바랍니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">2. 작중 표기 언어 및 텍스트 안내</h2>
+        </div>
+        <div class="callout callout-info" style="margin-top: 0;">
+          <div class="callout-icon">🌐</div>
+          <div>
+            <strong>러너 필독: 세계관 텍스트 메타인지 안내</strong><br>
+            본 커뮤니티에서 제공되는 모든 의사소통, 선내 안내 방송, 문서 및 단서는 기본적으로 <strong>한글 또는 영어</strong>를 매개체로 작동합니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">3. 직장인 및 성인 러너 배려 규칙</h2>
+        </div>
+        <div class="rule-box">
+          <div class="rule-title">① 현생 최우선</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            러너 대다수의 생업(야근, 출장, 회식 등) 일정을 적극 배려합니다. 실시간 접속에 대한 강제나 압박은 일절 없습니다.
+          </p>
+        </div>
+        <div class="rule-box">
+          <div class="rule-title">② 조사 세션 및 정보 공유</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            조사는 지정된 일정일 밤에 실시간 세션으로 진행됩니다. 실시간 참가가 어렵더라도 획득된 모든 단서는 기록되므로, 이후 러너 간 교류를 통해 얼마든지 내용을 확인하고 추리에 참여하실 수 있습니다.
+          </p>
+        </div>
+        <div class="rule-box" style="border-left-color: var(--accent-gold);">
+          <div class="rule-title">③ 부득이한 장기 부재 및 잠수 안내</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            <strong>무통보 잠수가 3일 이상 지속될 경우, 캐릭터의 개별 엔딩을 포함한 하차를 진행</strong>해 드립니다. 부득이하게 접속이 어려우실 경우 총괄계로 미리 가볍게 언질
+            부탁드립니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">4. 플레이 매너 및 소통 안내</h2>
+        </div>
+        <div class="rule-box">
+          <div class="rule-title">① 오너와 캐릭터의 철저한 분리</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            캐릭터 간의 불화, 의심, 대립이 오너 간의 갈등으로 번지지 않도록 유의해 주세요. 총괄계 및 공용 채널에서의 과도한 오너 트윗(메타 발언)은 몰입을 해칠 수 있으므로 지양해 주시기 바랍니다.
+          </p>
+        </div>
+        <div class="rule-box">
+          <div class="rule-title">② 개인 쪽지(DM) 및 비밀 대화</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            캐릭터 간의 1:1 대화 및 비밀 소통은 <strong>마스토돈의 쪽지(다이렉트 메시지) 기능</strong>을 활용해 주시기 바라며, 상황 파악 및 원활한 스토리 조율을 위해
+            <strong>반드시 총괄계를 수신인에 포함(함께 멘션)하여 대화</strong>해 주시길 부탁드립니다.
+          </p>
+        </div>
+        <div class="rule-box" style="border-left-color: #10b981; background: rgba(16, 185, 129, 0.04);">
+          <div class="rule-title" style="color: #6ee7b7;">③ 모두가 즐거운 항해를 위하여</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            러너분들 모두가 서로 알고 지내는 사이이자, 각자의 일상과 업무로 바쁜 분들입니다. 엄격하고 딱딱한 규칙이나 페널티보다는 서로의 입장과 상황을 최대한 배려하고 존중하며 함께 즐거운 커뮤를
+            만들어가고 싶습니다. 부담 없이 편안한 마음으로 재미있게 뛰어주셨으면 좋겠습니다!
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 푸터 영역 -->
+  <footer>
+    <div class="footer-mascot">
+      <img src="resource/mascot_pbot.png" alt="P-BOT 안내봇" class="mascot-avatar"
+        onerror="this.style.display='none'">
+      <div class="mascot-text">
+        <strong>P-BOT PROTOCOL v1.04</strong>
+        승객 여러분의 안전하고 쾌적한 극지 항해를 기원합니다.
+      </div>
+    </div>
+    <p>© 2026 OCEAN-TRAVEL & MV PROMETHEUS ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <!-- 탭 전환 자바스크립트 -->
+  <script>
+    function switchTab(tabId) {
+      // 모든 탭 버튼 비활성화
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // 모든 탭 콘텐츠 숨김
+      const sections = document.querySelectorAll('.tab-section');
+      sections.forEach(sec => sec.classList.remove('active'));
+
+      // 선택한 탭 활성화
+      const activeBtn = Array.from(buttons).find(b => b.getAttribute('onclick').includes(tabId));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const targetSection = document.getElementById('tab-' + tabId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        window.scrollTo({ top: 380, behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+
+</html>
