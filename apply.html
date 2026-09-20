@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로메테우스 | 1기 승선 신청서 접수 공지</title>
+  <meta name="description" content="극지 해식 동굴 탐사 크루즈 프로메테우스 호 러너 승선 신청 안내 및 구글 폼 접수 가이드">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    :root {
+      --bg-base: #060913;
+      --bg-surface: #0c1427;
+      --bg-card: rgba(16, 26, 51, 0.78);
+      --border-subtle: rgba(56, 189, 248, 0.18);
+      --border-strong: rgba(56, 189, 248, 0.45);
+      --primary: #38bdf8;
+      --primary-hover: #7dd3fc;
+      --primary-dim: rgba(56, 189, 248, 0.12);
+      --text-main: #f1f5f9;
+      --text-sub: #94a3b8;
+      --text-muted: #64748b;
+      --accent-danger: #f43f5e;
+      --accent-danger-bg: rgba(244, 63, 94, 0.12);
+      --accent-gold: #fbbf24;
+      --accent-gold-bg: rgba(251, 191, 36, 0.12);
+      --accent-cyan-glow: 0 0 20px rgba(56, 189, 248, 0.25);
+      --accent-red-glow: 0 0 20px rgba(244, 63, 94, 0.35);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.68;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(14, 116, 144, 0.24) 0%, transparent 65%),
+        radial-gradient(circle at 12% 28%, rgba(2, 132, 199, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 88% 75%, rgba(244, 63, 94, 0.08) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    /* CRT 스캔라인 효과 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.6;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--primary-hover);
+    }
+
+    /* 상단 글로벌 바 */
+    .top-global-bar {
+      background: rgba(10, 15, 28, 0.95);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 101;
+    }
+
+    .top-global-bar .guide-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-sub);
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .top-global-bar .guide-link:hover {
+      color: var(--primary);
+      border-color: var(--border-strong);
+      background: var(--primary-dim);
+    }
+
+    .top-dday-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #38bdf8;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.5px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulse 1.8s infinite;
+    }
+
+    /* 헤더 섹션 */
+    .hero-header {
+      position: relative;
+      padding: 70px 20px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-subtle);
+      background: linear-gradient(180deg, rgba(12, 20, 39, 0.92) 0%, rgba(6, 9, 19, 0.97) 100%);
+      overflow: hidden;
+    }
+
+    .hero-bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.22;
+      filter: blur(2px) grayscale(40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 2;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .ship-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .ship-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.35;
+        transform: scale(0.8);
+      }
+    }
+
+    .main-title {
+      font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.22;
+      margin-bottom: 14px;
+      color: #ffffff;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .main-title span {
+      background: linear-gradient(135deg, #ffffff 30%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sub-title {
+      font-size: 1.1rem;
+      color: var(--text-sub);
+      font-weight: 400;
+      max-width: 660px;
+      margin: 0 auto 28px;
+      word-break: keep-all;
+    }
+
+    /* 헤더 빠른 액션 버튼 */
+    .cta-button-group {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      border-radius: var(--radius-md);
+      font-size: 0.96rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      border: 1px solid transparent;
+      font-family: inherit;
+    }
+
+    .btn-primary-cta {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 20px rgba(14, 165, 233, 0.35), 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-primary-cta:hover {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 26px rgba(56, 189, 248, 0.6), 0 6px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-secondary-cta {
+      background: rgba(16, 26, 51, 0.8);
+      color: var(--text-main);
+      border-color: var(--border-subtle);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary-cta:hover {
+      background: rgba(26, 40, 75, 0.9);
+      color: #ffffff;
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+
+    /* 탭 네비게이션 */
+    .nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 9, 19, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-sub);
+      padding: 11px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .nav-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-btn.active {
+      color: var(--primary);
+      background: var(--primary-dim);
+      border-color: var(--border-strong);
+      box-shadow: var(--accent-cyan-glow);
+    }
+
+    /* 메인 콘텐츠 영역 */
+    .content-container {
+      max-width: 1040px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+    }
+
+    .tab-section {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .tab-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 카드 스타일 */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* 콜아웃 */
+    .callout {
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      line-height: 1.62;
+    }
+
+    .callout-warning {
+      background: var(--accent-danger-bg);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      color: #fecdd3;
+    }
+
+    .callout-info {
+      background: var(--primary-dim);
+      border: 1px solid var(--border-strong);
+      color: #e0f2fe;
+    }
+
+    .callout-gold {
+      background: var(--accent-gold-bg);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      color: #fef08a;
+    }
+
+    .callout-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    /* 타임라인 카드 3단 */
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .schedule-step-card {
+      background: rgba(12, 20, 39, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 22px 18px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .schedule-step-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .schedule-step-card.active-step {
+      border-color: var(--primary);
+      background: linear-gradient(180deg, rgba(14, 116, 144, 0.15) 0%, rgba(12, 20, 39, 0.8) 100%);
+      box-shadow: var(--accent-cyan-glow);
+    }
+
+    .step-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .step-date {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      font-family: "Courier New", monospace;
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.55;
+    }
+
+    /* 프롤로그 스토리 컨테이너 */
+    .story-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(10, 16, 32, 0.9) 0%, rgba(6, 9, 19, 0.95) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 36px 32px;
+      margin-bottom: 24px;
+    }
+
+    .story-lead {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .story-lead span {
+      color: #fff;
+    }
+
+    .story-paragraph {
+      font-size: 1.02rem;
+      color: #d1d5db;
+      line-height: 1.85;
+      margin-bottom: 18px;
+      word-break: keep-all;
+    }
+
+    .story-quote {
+      position: relative;
+      background: rgba(14, 116, 144, 0.1);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 18px 22px;
+      margin: 22px 0;
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: #e0f2fe;
+    }
+
+    .story-quote strong {
+      color: var(--primary-hover);
+    }
+
+    .story-divider {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+      margin: 28px 0;
+    }
+
+    .story-highlight {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      border-left: 3px solid var(--accent-gold);
+      padding-left: 14px;
+      margin: 18px 0;
+    }
+
+    /* 공포/글리치 경고 상자 */
+    .horror-glitch-box {
+      background: linear-gradient(135deg, rgba(20, 5, 10, 0.92) 0%, rgba(30, 8, 14, 0.95) 100%);
+      border: 1px solid rgba(244, 63, 94, 0.6);
+      border-radius: var(--radius-md);
+      padding: 26px 28px;
+      margin: 28px 0;
+      position: relative;
+      box-shadow: var(--accent-red-glow);
+      overflow: hidden;
+    }
+
+    .horror-glitch-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-danger);
+    }
+
+    .horror-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ff6b81;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .horror-text {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #ffe4e6;
+      word-break: keep-all;
+    }
+
+    .horror-final-line {
+      margin-top: 14px;
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(244, 63, 94, 0.8);
+    }
+
+    /* 기밀/마스킹 스타일 (■■■) */
+    .redacted {
+      background-color: #0b0f19;
+      color: var(--accent-danger);
+      font-family: "Courier New", monospace;
+      font-weight: bold;
+      padding: 2px 7px;
+      border-radius: 3px;
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      display: inline-block;
+      letter-spacing: 2px;
+      cursor: not-allowed;
+      user-select: none;
+      box-shadow: inset 0 0 6px rgba(244, 63, 94, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .redacted:hover {
+      border-color: var(--accent-danger);
+      background-color: rgba(244, 63, 94, 0.2);
+      text-shadow: 0 0 8px var(--accent-danger);
+    }
+
+    /* 탑승 동기 아이디어 칩 */
+    .motivation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .motivation-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      transition: all 0.2s ease;
+    }
+
+    .motivation-chip:hover {
+      background: rgba(56, 189, 248, 0.06);
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+
+    .motivation-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .motivation-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .motivation-desc {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    /* 구글폼 항목 테이블 / 리스트 */
+    .form-fields-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .field-card {
+      background: rgba(12, 20, 39, 0.65);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: border-color 0.2s ease;
+    }
+
+    .field-card:hover {
+      border-color: var(--border-strong);
+    }
+
+    .field-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary-dim);
+      border: 1px solid var(--border-strong);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: "Courier New", monospace;
+    }
+
+    .field-content {
+      flex: 1;
+    }
+
+    .field-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .field-label {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .field-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-public {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .badge-private {
+      background: rgba(148, 163, 184, 0.12);
+      color: #94a3b8;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .field-desc {
+      font-size: 0.92rem;
+      color: var(--text-sub);
+      line-height: 1.55;
+    }
+
+    .field-example {
+      margin-top: 6px;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      border-left: 2px solid var(--border-strong);
+    }
+
+    /* 공개 vs 비공개 비교 그리드 */
+    .privacy-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 22px 0;
+    }
+
+    .privacy-box {
+      background: rgba(12, 20, 39, 0.6);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .privacy-box.public-box {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.06) 0%, rgba(12, 20, 39, 0.6) 100%);
+    }
+
+    .privacy-box.private-box {
+      border-color: rgba(148, 163, 184, 0.3);
+    }
+
+    .privacy-box-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .public-box .privacy-box-title {
+      color: #34d399;
+    }
+
+    .private-box .privacy-box-title {
+      color: #94a3b8;
+    }
+
+    .privacy-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .privacy-box li {
+      font-size: 0.92rem;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .privacy-box li:last-child {
+      border-bottom: none;
+    }
+
+    /* 규칙 리스트 박스 */
+    .rule-box {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--primary);
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .rule-title {
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    /* 복사 버튼 있는 프리뷰 박스 */
+    .copy-preview-box {
+      background: #080d1a;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      margin-top: 16px;
+      font-family: inherit;
+      position: relative;
+    }
+
+    .copy-preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 8px;
+    }
+
+    .btn-copy {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid var(--border-strong);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-copy:hover {
+      background: var(--primary);
+      color: #060913;
+    }
+
+    .copy-content-text {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    /* 푸터 */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(6, 9, 19, 0.95);
+      padding: 40px 20px 60px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-mascot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .mascot-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--primary);
+      background: var(--bg-surface);
+      object-fit: cover;
+    }
+
+    .mascot-text {
+      text-align: left;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .mascot-text strong {
+      color: var(--primary);
+      display: block;
+    }
+
+    /* 반응형 대응 */
+    @media (max-width: 768px) {
+      .hero-header {
+        padding: 50px 16px 36px;
+      }
+
+      .main-title {
+        font-size: 1.85rem;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .schedule-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .privacy-split-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-button-group {
+        flex-direction: column;
+      }
+
+      .btn-cta {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 최상단 글로벌 링크 바 -->
+  <div class="top-global-bar">
+    <div class="top-dday-badge">
+      <span class="status-dot"></span>
+      <span>1기 승선 신청서 접수 진행 중 (9/21 ~ 9/30)</span>
+    </div>
+    <a href="index.html" class="guide-link">
+      <span>📖 공식 승선 안내 가이드 바로가기</span>
+      <span>→</span>
+    </a>
+  </div>
+
+  <!-- 헤더 영역 -->
+  <header class="hero-header">
+    <img src="resource/cruise_ship.png" alt="Prometheus cruise ship" class="hero-bg-image"
+      onerror="this.style.display='none'">
+    <div class="hero-container">
+      <div class="ship-badge">Boarding Application • Prometheus</div>
+      <h1 class="main-title"><span>승선 신청서 접수 공지</span></h1>
+      <p class="sub-title">
+        해식 동굴을 향해 나아가는 특별 크루즈선 <strong>프로메테우스 호</strong>의 탑승객을 모집합니다.<br>
+        아래 일정 및 승선 규정을 확인하신 후 구글 폼을 통해 신청서를 제출해 주시기 바랍니다.
+      </p>
+
+      <!-- CTA 버튼 그룹 -->
+      <div class="cta-button-group">
+        <!-- 실제 구글 폼 URL로 손쉽게 교체 가능하도록 세팅 -->
+        <a href="https://forms.gle/WxxJXep6yULsa9Qb9" target="_blank" rel="noopener noreferrer" class="btn-cta btn-primary-cta" id="main-form-link">
+          <span>📝 승선 신청서 구글 폼 작성하기</span>
+          <span>↗</span>
+        </a>
+        <!-- 실시간 공개 시트 링크 -->
+        <a href="https://docs.google.com/spreadsheets/d/1Ll3HL5Cubeci4yiBdDwXhK4O2BxJ7CBDxO6G7Vpfaq0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-cta btn-secondary-cta" id="main-sheet-link">
+          <span>📊 실시간 공개 승선 명부 확인</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 탭 네비게이션 -->
+  <nav class="nav-wrapper">
+    <div class="nav-container">
+      <button class="nav-btn active" onclick="switchTab('schedule')">📅 접수 및 출항 일정</button>
+      <button class="nav-btn" onclick="switchTab('prologue')">🌊 탑승 프롤로그</button>
+      <button class="nav-btn" onclick="switchTab('character-guide')">👤 캐릭터 생성 가이드</button>
+    </div>
+  </nav>
+
+  <!-- 메인 콘텐츠 영역 -->
+  <main class="content-container">
+
+    <!-- 1. 접수 및 출항 일정 탭 -->
+    <section id="tab-schedule" class="tab-section active">
+      
+      <!-- 핵심 일정 3단계 카드 -->
+      <div class="schedule-grid">
+        <div class="schedule-step-card active-step">
+          <div>
+            <div class="step-badge">STEP 01 • 접수 기간</div>
+            <div class="step-title">승선 신청서 접수</div>
+            <div class="step-date">09.21 자정 ~ 09.30 23:59</div>
+          </div>
+          <p class="step-desc">
+            구글 폼을 통해 1인 1캐릭터 신청서를 접수합니다. 마감 시각(9월 30일 23:59)까지 이메일 인증을 통해 답변 수정이 가능합니다.
+          </p>
+        </div>
+
+        <div class="schedule-step-card">
+          <div>
+            <div class="step-badge" style="color: var(--accent-gold);">STEP 02 • 명단 발표</div>
+            <div class="step-title">승선 명단 정식 공개</div>
+            <div class="step-date">10.01 (목) 19:00 (오후 7시)</div>
+          </div>
+          <p class="step-desc">
+            최종 승선 인원 발표와 함께, 계정 생성 방법 및 출항 전까지 러너들이 준비해야 할 필수 사전 가이드가 공지됩니다.
+          </p>
+        </div>
+
+        <div class="schedule-step-card">
+          <div>
+            <div class="step-badge" style="color: var(--primary);">STEP 03 • 러닝 시작</div>
+            <div class="step-title">프로메테우스 호 출항</div>
+            <div class="step-date">10.02 (금) 21:00 (오후 9시)</div>
+          </div>
+          <p class="step-desc">
+            정식 러닝 시작 시간입니다. 해당 시각에 맞추어 프로메테우스 호가 출항합니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 일정 상세 안내 카드 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">🧭 신청 및 출항 상세 타임라인</h2>
+          <span class="card-subtitle">한국 표준시(KST) 기준</span>
+        </div>
+
+        <div class="rule-box">
+          <div class="rule-title">① 신청서 접수 기간: 2026. 09. 21(월) 00:00 ~ 09. 30(수) 23:59</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            충분한 시간 동안 캐릭터를 준비하실 수 있도록 10일간 접수를 진행합니다. 기한 내에 구글 폼으로 접수된 신청서만 유효하며, 동일 계정으로 언제든 수정이 가능하므로 마감 직전까지 편안하게 내용을 가다듬어 주시기 바랍니다.
+          </p>
+        </div>
+
+        <div class="rule-box" style="border-left-color: var(--accent-gold);">
+          <div class="rule-title">② 승선 명단 정식 공개: 2026. 10. 01(목) 19:00 (오후 7시)</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            승선 확정 명단이 트위터/총괄계 및 본 웹페이지를 통해 공지됩니다.<br>
+            <strong>※ 중요:</strong> 이때 <strong>계정 생성 등 출항 전까지 러너들이 해야 하는 것들</strong>이 함께 공지될 예정입니다.
+          </p>
+        </div>
+
+        <div class="rule-box" style="border-left-color: #10b981;">
+          <div class="rule-title">③ 정식 출항 시간: 2026. 10. 02(금) 21:00 (오후 9시)</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            정식 러닝 시작 시간입니다. 해당 시각(10월 2일 오후 9시)에 맞추어 프로메테우스 호가 출항합니다.
+          </p>
+        </div>
+
+        <div class="callout callout-info" style="margin-top: 24px;">
+          <div class="callout-icon">💡</div>
+          <div>
+            <strong>전체 일정표 확인:</strong> 출항 이후 진행되는 격일 21:30 공식 항해 일정 및 엔딩 일정(10/23)에 대한 전체 달력은 
+            <a href="index.html#calendar" style="font-weight: 700; text-decoration: underline;">[공식 승선 안내 가이드 - 항해 일정표 탭]</a>에서 언제든지 열람하실 수 있습니다.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 2. 탑승 프롤로그 탭 -->
+    <section id="tab-prologue" class="tab-section">
+      
+      <!-- 서사형 프롤로그 -->
+      <div class="story-card">
+        <div class="story-lead">
+          <span>🚢</span>
+          <span>프로메테우스 호 — 승선 프롤로그</span>
+        </div>
+
+        <p class="story-paragraph">
+          <strong>‘프로메테우스 호(Prometheus).’</strong><br>
+          당신이 사전에 그 이름을 어디선가 들어보았든, 혹은 아무것도 모른 채 그저 우연히 발걸음을 옮겼든 상관없습니다.<br>
+          이것은 수천 년 동안 거센 극지의 파도가 깎아 만든 천연 해식 동굴의 장관을 관람하기 위해 기획된 초특가 크루즈 여행입니다.
+        </p>
+
+        <p class="story-paragraph">
+          다만, 항구에 도착했을 때 당신은 무언가 이상하다는 기시감에 사로잡혔을지도 모릅니다.<br>
+          여행객과 선원들로 바쁘게 오고 가는 북적이는 부두였지만, 이상하게도 당신들이 탑승해야 할 거대한 크루즈선은 그 넓은 선착장 어디에서도 보이지 않았으니까요.
+        </p>
+
+        <p class="story-paragraph">
+          부두 한편에서 당신들을 맞이한 것은 여러 명이 탈 수 있는 모터보트 한 척, 그리고 승무원 명찰을 착용한 몇 사람뿐이었습니다.<br>
+          거대한 크루즈에 어울리지 않는 작은 배를 마주한 당신들은 당황했을 수도, ‘이 배라도 타야 하나’ 마음속으로 망설였을 수도 있습니다.
+        </p>
+
+        <div class="story-quote">
+          “부두에 긴급히 댄 다른 여객선이 있어서 부득이하게 조금 떨어진 위치에 크루즈선을 세워두었습니다.<br>
+          짐을 맡아드릴 테니 조심히 올라주세요.<br>
+          <strong>티켓 검사는 배 탑승 후 진행할 예정이고, 이와 같은 불편함에 대해서는 당사에서 보상하도록 하겠습니다.</strong>”
+        </div>
+
+        <p class="story-paragraph">
+          직원들의 차분하고 정중한 설명은 당신을 비교적 안심시킵니다.<br>
+          당신은 그 말을 곧이곧대로 믿었을 수도, 반신반의했을 수도, 영 꺼림칙해서 끝까지 경계를 풀지 않았을 수도 있습니다.<br>
+          하지만…… 승무원들이 가리킨 방향에는 분명, 번듯하고 거대한 흰 여객선이 바다 위에 우뚝 솟아 있었습니다!
+        </p>
+
+        <hr class="story-divider">
+
+        <p class="story-paragraph">
+          그렇게 배에 탑승한 당신은, 신비로운 해식 동굴을 향한 여정을 시작합니다.<br>
+          초기 탑승 과정의 불편함에 대해 사과하기 위해 연회장 단상에 직접 오른 선장은, 승객들에게 믿기 어려울 만큼 거대한 보상을 약속했습니다.<br>
+          <strong>‘이번 항해 중 선내 모든 유료 서비스 전면 무료 이용, 그리고 당사 운영 크루즈 자유탑승권 지급.’</strong>
+        </p>
+
+        <p class="story-paragraph">
+          화려하게 베풀어지는 무료 웰컴 칵테일 파티와 감미로운 음악, 고급스러운 식사와 친절한 승무원들.<br>
+          무엇보다 뒤뚱거리며 모두를 반겨주는 귀여운 마스코트 로봇새, <strong>‘피봇(P-BOT)’</strong>까지.<br>
+          시작이 어수선하긴 했지만, 꽤 즐거운 항해가 될 것 같습니다.
+        </p>
+
+        <p class="story-paragraph">
+          크루즈는 천천히 운행되어 세 개의 해식 동굴을 지나, 다시 처음 출항했던 항구로 돌아올 예정입니다.<br>
+          바다는 잔잔하고, 바람은 선선합니다. 갑판에 선 당신의 앞에 드넓게 펼쳐진 대양. 아, 여행하기 무척 아름다운 날씨입니다!
+        </p>
+
+        <p class="story-paragraph">
+          프로메테우스는 하얀 물보라를 일으키며 첫번째 해식 동굴을 향해 나아갑니다.<br>
+          우리는 모두 안정되어 있고, 행복합니다.<br>
+          <span style="color: #475569;">우리는 모두 여기 존재합니다.</span>
+        </p>
+
+        <p class="story-paragraph" style="color: #475569; margin-top: 16px;">
+          신은 이곳에 존재합니다.<br>
+          신은 이곳에 <span style="letter-spacing: 1px; color: #384556;">■■■■■■</span>
+        </p>
+      </div>
+
+      <!-- 탑승 동기 가이드 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">💡 캐릭터 탑승 동기 가이드</h2>
+          <span class="card-subtitle">모든 형태의 서사가 허용됩니다</span>
+        </div>
+        
+        <p style="margin-bottom: 16px; color: var(--text-sub);">
+          <strong>“어떠한 계기든, 프로메테우스 호에 탑승하기만 하면 됩니다.”</strong><br>
+          정식으로 티켓을 구매해 여행 온 관광객부터 기상천외한 사고로 휘말린 승객까지, 캐릭터의 개성을 살릴 수 있는 다채로운 탑승 동기를 자유롭게 부여해 주세요.
+        </p>
+
+        <div class="motivation-grid">
+          <div class="motivation-chip">
+            <div class="motivation-tag">유형 A • 정규 관광</div>
+            <div class="motivation-title">티켓 구매 & 휴양 여행</div>
+            <div class="motivation-desc">극지 해식 동굴 절경을 관람하기 위해 저렴하게 나온 얼리버드 티켓을 직접 구매하여 탑승.</div>
+          </div>
+
+          <div class="motivation-chip">
+            <div class="motivation-tag">유형 B • 행운/우연</div>
+            <div class="motivation-title">이벤트 당첨 & 경품</div>
+            <div class="motivation-desc">대형 마트 영수증 이벤트, 포인트 복권, 사내 복지 추첨 등에 당첨되어 무료 승선권을 얻음.</div>
+          </div>
+
+          <div class="motivation-chip">
+            <div class="motivation-tag">유형 C • 돌발/탈출</div>
+            <div class="motivation-title">쫓기던 중 급박한 탑승</div>
+            <div class="motivation-desc">채권자, 경찰, 원수, 혹은 껄끄러운 관계를 피해 항구에 정박해 있던 배에 눈 딱 감고 올라탐.</div>
+          </div>
+
+          <div class="motivation-chip">
+            <div class="motivation-tag">유형 D • 조난 & 구조</div>
+            <div class="motivation-title">바다 표류 후 극적 인양</div>
+            <div class="motivation-desc">인근 해역에서 낚싯배나 요트가 뒤집혀 표류하다가, 지나가던 프로메테우스 호에 의해 극적으로 구조됨.</div>
+          </div>
+
+          <div class="motivation-chip">
+            <div class="motivation-tag">유형 E • 실수/주움</div>
+            <div class="motivation-title">길거리 습득 & 착오</div>
+            <div class="motivation-desc">항구 바닥이나 카페에서 누군가 흘린 승선권을 주워 호기심에 타버렸거나 배를 잘못 착각하고 탑승.</div>
+          </div>
+
+          <div class="motivation-chip">
+            <div class="motivation-tag">유형 F • 자유 설정</div>
+            <div class="motivation-title">업무 출장, 연구, 기타</div>
+            <div class="motivation-desc">지질/생태 조사 취재, 선내 납품 계약, 은밀한 개인적 사유 등 개연성 있는 모든 동기 환영.</div>
+          </div>
+        </div>
+
+        <div class="callout callout-gold">
+          <div class="callout-icon">💬</div>
+          <div>
+            <strong>설정 문의 안내:</strong> “내 캐릭터의 탑승 배경이나 특이 설정이 세계관에 부합하는지 확신이 서지 않는다면?” 언제든지 주저하지 마시고 <strong>총괄계 DM으로 사전 문의</strong>해 주시기 바랍니다! 친절하게 상담 및 조율을 도와드립니다.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 3. 캐릭터 생성 가이드 탭 -->
+    <section id="tab-character-guide" class="tab-section">
+      
+      <!-- 구글 폼 접수 원칙 안내 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">📝 승선 신청서 접수 원칙</h2>
+          <span class="card-subtitle">구글 폼 접수 안내</span>
+        </div>
+
+        <div class="callout callout-info" style="margin-top: 0;">
+          <div class="callout-icon">ℹ️</div>
+          <div>
+            <strong>1인 1캐릭터 & 상시 수정 가능:</strong><br>
+            • 본 커뮤니티는 <strong>1인 1캐릭터 신청</strong>을 원칙으로 합니다.<br>
+            • 중복 제출 방지 및 원활한 내용 수정을 위해 <strong>구글 계정 로그인(이메일 인증)</strong>을 필수로 요구합니다.<br>
+            • 신청서를 제출하신 후에도 <strong>마감 시각(9/30 23:59)까지 언제든지 본인의 답변을 자유롭게 수정</strong>하실 수 있으며, 항상 가장 최근의 답변만 유효하게 반영됩니다.
+          </div>
+        </div>
+
+        <div class="callout callout-warning">
+          <div class="callout-icon">💾</div>
+          <div>
+            <strong>[권장] 작성 내용 별도 백업:</strong><br>
+            • <strong>응답 사본 이메일 수신:</strong> 구글 폼 제출 완료 화면(또는 폼 하단)에서 <strong>'응답 사본 받기' 옵션을 활성화하시면 작성하신 내용의 사본이 본인의 구글 이메일로 자동 전송</strong>됩니다.<br>
+            • <strong>개인 백업 권장:</strong> 언제든지 폼의 '응답 수정' 기능을 통해 내용을 수정하실 수 있지만, 기재하신 상세 서사는 러닝 중 캐릭터 서사 조율에 소중한 자료가 되므로 개인 메모장 등에도 별도로 복사/저장해 두시면 더욱 좋습니다.
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="https://forms.gle/WxxJXep6yULsa9Qb9" target="_blank" rel="noopener noreferrer" class="btn-cta btn-primary-cta" style="width: auto; display: inline-flex;">
+            <span>📝 승선 신청서 구글 폼 작성하러 가기</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 캐릭터 생성 가이드라인 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">👤 캐릭터 생성 가이드라인</h2>
+          <span class="card-subtitle">탑승객 프로필 설정 가이드</span>
+        </div>
+
+        <div class="rule-box" style="border-left-color: var(--primary);">
+          <div class="rule-title">① 세계관적 배경 : 가상의 국가 및 가상의 바다 상정</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            프로메테우스 호가 출항하는 항구, 승선지, 항해 노선 및 목적지인 해식 동굴은 모두 <strong>가상의 국가 및 가상의 해역</strong>을 무대로 상정하고 있습니다. 현실의 특정 국가 법률, 지리적 경계, 정치적 현실에 얽매이지 않고 자유로운 서사를 펼치실 수 있습니다.
+          </p>
+        </div>
+
+        <div class="rule-box" style="border-left-color: #34d399;">
+          <div class="rule-title">② 캐릭터 국적 및 출신 : 완전 자유</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            캐릭터의 <strong>국적, 인종, 문화적 배경에는 일절 제한이 없습니다.</strong> 전 세계 어느 곳 출신이든 자유롭게 설정 가능합니다. 이름 또한 국적에 맞는 본명이나 일상적인 별칭/활동명 모두 허용되며, 원활한 러닝 소통을 위해 한글 또는 영문 표기 병기를 권장합니다.
+          </p>
+        </div>
+
+        <div class="rule-box" style="border-left-color: var(--accent-danger);">
+          <div class="rule-title" style="color: #ff6b81;">③ 연령 제한 : 미성년자 캐릭터 생성 절대 불가 (만 18세 이상 성인 한정)</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            본 커뮤니티는 <strong>밀실 고립, 조난, 심리적 불안, 시신의 변형, 살인 및 유혈 묘사</strong>를 다루는 스릴러 장르입니다.<br>
+            이에 따라 <strong>만 18세 미만의 미성년자 캐릭터(어린이, 청소년 등)는 생성이 절대 불가</strong>하며, 반드시 <strong>만 18세 이상의 성인 캐릭터</strong>로만 생성해 주셔야 합니다. (캐릭터의 성인 연령은 20대부터 노년층까지 폭넓게 자유입니다.)
+          </p>
+        </div>
+
+        <div class="rule-box" style="border-left-color: var(--accent-gold);">
+          <div class="rule-title">④ 선행 관계(선관) 규정: 최대 1명 (별도 텍관 기간 없음)</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            러너 간 진입 장벽 완화와 빠른 몰입을 위해 선관은 <strong>최대 1명</strong>으로 제한합니다. 별도의 텍스트 관계(텍관) 조율 기간은 주어지지 않으므로, 사전 관계가 필요하신 경우 접수 기간 동안 조율하여 신청서에 기재해 주시기 바랍니다.
+          </p>
+        </div>
+
+        <div class="rule-box" style="border-left-color: #0284c7;">
+          <div class="rule-title">⑤ 직업, 신분 및 캐릭터성</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            휴양을 온 일반 관광객, 취재 기자, 대학원생/연구원, 직장인, 프리랜서, 자영업자, 선상 임시 계약직, 도망자, 무직 등 탑승 동기와 어우러지는 모든 현실적 직업군이 허용됩니다.<br>
+            <span style="color: var(--accent-gold); font-size: 0.88rem;">※ 단, 세계관의 몰입과 서스펜스 분위기를 해치는 초능력자/이능력자, 절대적인 무력이나 권력을 가진 먼치킨 설정은 불가하며, 평범한 인간적 결함과 개성을 지닌 인물을 권장합니다.</span>
+          </p>
+        </div>
+
+        <div class="rule-box" style="border-left-color: var(--accent-danger);">
+          <div class="rule-title" style="color: #ff6b81;">⑥ 트리거 워닝 및 캐릭터의 운명</div>
+          <p style="color: var(--text-sub); font-size: 0.95rem;">
+            본 커뮤니티는 <strong>밀실 고립, 조난, 심리적 불안, 상해, 살인 및 유혈 묘사, 시신의 변형</strong>을 포함한 스릴러 장르입니다. 캐릭터가 통제 불능의 비극적 국면에 직면할 수 있음을 사전 인지하시고 신청해 주시기 바랍니다.
+          </p>
+        </div>
+
+        <div class="callout callout-gold">
+          <div class="callout-icon">💬</div>
+          <div>
+            <strong>설정 가능 여부 문의:</strong><br>
+            캐릭터의 세부 설정, 특이 이력, 탑승 동기 등이 세계관에 부합하는지 확신이 서지 않는다면 언제든 <strong>총괄계 DM으로 문의</strong>해 주시기 바랍니다. 함께 조율하며 최선의 방향을 안내해 드리겠습니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 바로가기 하단 배너 -->
+      <div class="card" style="text-align: center; padding: 36px 20px; border-color: var(--border-strong);">
+        <h3 style="font-size: 1.3rem; margin-bottom: 10px; color: #fff;">준비되셨습니까? 프로메테우스 호가 기다립니다.</h3>
+        <p style="color: var(--text-sub); margin-bottom: 22px; font-size: 0.95rem;">
+          지금 바로 신청서를 작성하고 당신의 자리를 확보하세요.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <a href="https://forms.gle/WxxJXep6yULsa9Qb9" target="_blank" rel="noopener noreferrer" class="btn-cta btn-primary-cta">
+            <span>📝 구글 폼 신청서 작성하러 가기</span>
+            <span>↗</span>
+          </a>
+          <a href="https://docs.google.com/spreadsheets/d/1Ll3HL5Cubeci4yiBdDwXhK4O2BxJ7CBDxO6G7Vpfaq0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-cta btn-secondary-cta">
+            <span>📊 실시간 공개 승선 명부 확인</span>
+            <span>↗</span>
+          </a>
+          <a href="index.html" class="btn-cta btn-secondary-cta">
+            <span>📖 전체 승선 가이드 읽어보기</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- 푸터 영역 -->
+  <footer>
+    <div class="footer-mascot">
+      <img src="resource/mascot_pbot.png" alt="P-BOT 안내봇" class="mascot-avatar"
+        onerror="this.style.display='none'">
+      <div class="mascot-text">
+        <strong>P-BOT APPLICATION PROTOCOL</strong>
+        승객 여러분의 무사 승선과 안전한 해식 동굴 탐사를 위해 대기 중입니다.
+      </div>
+    </div>
+    <p>© 2026 OCEAN-TRAVEL & PROMETHEUS ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <!-- 스크립트 -->
+  <script>
+    // 탭 전환 로직
+    function switchTab(tabId) {
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      const sections = document.querySelectorAll('.tab-section');
+      sections.forEach(sec => sec.classList.remove('active'));
+
+      const activeBtn = Array.from(buttons).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes(tabId));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const targetSection = document.getElementById('tab-' + tabId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        window.scrollTo({ top: 380, behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+
+</html>
