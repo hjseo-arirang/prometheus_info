@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P-Pass 사용 가이드 | 프로메테우스</title>
+  <meta name="description" content="P-Pass의 기본 메뉴, 조사와 이동, 개인·주요 아이템, 방 채팅과 기록 열람 규칙을 안내합니다.">
+  <!-- index.html에 합칠 때: guide.css와 resource/guide 이미지 경로를 유지합니다. -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="resource/guide/guide.css">
+</head>
+<body class="guide-page">
+  <!-- P-Pass 가이드 본문 시작: index.html의 원하는 탭/섹션 내부에 삽입 -->
+  <article class="ppass-guide-container" aria-labelledby="ppass-title">
+    <header>
+      <p class="ppass-eyebrow">PROMETHEUS · PASSENGER GUIDE</p>
+      <h1 id="ppass-title">P-Pass 사용 가이드</h1>
+      <p class="ppass-lead">선내 탐색에 필요한 메뉴와 이용 규칙을 안내합니다.</p>
+    </header>
+    <nav class="ppass-nav" aria-label="사용법 목차"><a href="#ppass-menu">기본 메뉴</a><a href="#ppass-investigation">조사 규칙</a><a href="#ppass-items">아이템</a><a href="#ppass-chat">채팅·로그</a><a href="#ppass-desk">객실 책상</a><a href="#ppass-dice">미니게임</a></nav>
+    <section class="ppass-card" id="ppass-menu" aria-labelledby="ppass-menu-title">
+      <h2 id="ppass-menu-title">01. 기본 메뉴 사용법</h2>
+      <figure class="ppass-capture"><img src="resource/guide/app-home.jpg" width="666" height="660" loading="lazy" alt="P-Pass 홈 화면. 내 정보, 전체 선내 지도, 미니게임, 조사 이어하기 메뉴."><figcaption>홈에서 원하는 메뉴를 골라 주세요. 캡처는 테스트 계정 화면입니다.</figcaption></figure>
+      <dl class="ppass-menu">
+        <dt>홈</dt><dd>조사 가능 여부를 확인하고, 조사 이어하기와 미니게임을 이용할 수 있습니다.</dd>
+        <dt>전체 선내 지도</dt><dd>이동하고 싶은 방을 선택해 주세요.</dd>
+        <dt>내 정보 → 소지품</dt><dd>내 개인 아이템과 공용 주요 아이템을 확인할 수 있습니다.</dd>
+        <dt>내 정보 → 기록</dt><dd>함께 발견한 주요 정보와 아이템을 다시 읽어 보세요.</dd>
+        <dt>내 정보 → 전체 로그</dt><dd>내가 볼 수 있는 대화와 시스템 알림을 날짜별로 확인할 수 있습니다.</dd>
+      </dl>
+    </section>
+    <section class="ppass-card" id="ppass-investigation" aria-labelledby="ppass-investigation-title">
+      <h2 id="ppass-investigation-title">02. 이동 및 조사 안내</h2>
+      <ul>
+        <li><strong>다른 메뉴를 열어도 조사는 유지됩니다.</strong> 현재 방과 진행 중인 조사는 유지되고, 대기 시간도 계속 진행됩니다.</li>
+        <li><strong>조사 시간이 끝나면</strong> 완료한 결과와 획득한 정보만 다시 볼 수 있습니다. 허용된 방 방문과 채팅은 계속 이용해 주세요.</li>
+        <li><strong>이동과 조사에는 시간이 걸립니다.</strong> 다만 자유 방문 중에는 기다리지 않고 이동합니다.</li>
+        <li><strong>이동·조사는 한 번에 하나씩 진행합니다.</strong> 이동을 취소하면 원래 방에 남고, 조사를 취소하면 결과와 보상을 받지 못합니다.</li>
+        <li><strong>단서나 암호가 먼저 필요할 수 있습니다.</strong> 다른 승객이 조사 중인 대상은 잠시 기다려 주세요.</li>
+        <li><strong>완료한 결과는 다시 읽을 수 있습니다.</strong> 같은 조사로 보상을 반복해서 받지는 못합니다.</li>
+      </ul>
+    </section>
+    <section class="ppass-card" id="ppass-items" aria-labelledby="ppass-items-title">
+      <h2 id="ppass-items-title">03. 아이템과 정보 확인</h2>
+      <figure class="ppass-capture"><img src="resource/guide/app-items.jpg" width="666" height="490" loading="lazy" alt="내 정보의 소지품 탭. 주요 아이템과 개인 아이템이 구분되어 있다."><figcaption>주요 아이템과 개인 아이템은 이렇게 구분되어 표시됩니다.</figcaption></figure>
+      <ul>
+        <li><strong>개인 아이템</strong>은 각자 소지합니다. 조사로 얻은 개인 물품은 책상으로 전달할 수 있습니다.</li>
+        <li><strong>주요 아이템</strong>은 한 명이 얻으면 모두에게 공유됩니다. 회차가 바뀌어도 유지되며, 따로 전달할 필요는 없습니다.</li>
+        <li><strong>주요 정보</strong>는 내 정보 → 기록에서 확인해 주세요. 개인 조사 지문은 자동으로 공유되지 않습니다.</li>
+      </ul>
+    </section>
+    <section class="ppass-card" id="ppass-chat" aria-labelledby="ppass-chat-title">
+      <h2 id="ppass-chat-title">04. 채팅과 전체 로그</h2>
+      <figure class="ppass-capture"><img src="resource/guide/app-chat.jpg" width="650" height="309" loading="lazy" alt="방 채팅 화면. 전체, 플레이어, 시스템 필터와 메시지 입력창."><figcaption>방 안에서 대화할 때 쓰는 화면입니다. 지난 대화는 내 정보의 전체 로그에서 확인해 주세요.</figcaption></figure>
+      <ul>
+        <li><strong>채팅은 같은 방의 승객끼리 이용합니다.</strong> 다른 방의 대화는 보이지 않습니다.</li>
+        <li><strong>메뉴를 바꿔도 방에 머무릅니다.</strong> 실제 이동이 완료되어야 소속 방이 바뀝니다.</li>
+        <li><strong>내 정보 → 전체 로그</strong>에서 머물렀던 동안의 대화와 내가 보낸 메시지를 다시 볼 수 있습니다.</li>
+        <li><strong>자리를 비운 동안의 대화는 볼 수 없습니다.</strong> 같은 방에 다시 들어가도 공개되지 않습니다.</li>
+      </ul>
+    </section>
+    <section class="ppass-card" id="ppass-desk" aria-labelledby="ppass-desk-title">
+      <h2 id="ppass-desk-title">05. 객실 책상 사용법</h2>
+      <figure><img src="resource/guide/cabin-clean.jpg" width="1376" height="768" loading="lazy" alt="밝은 낮의 객실. 침대 앞 책상에 쪽지를 남길 수 있는 노트가 놓여 있다."><figcaption>밝은 객실의 책상에서 쪽지와 아이템을 남겨 보세요.</figcaption></figure>
+      <ul>
+        <li><strong>다른 승객의 책상</strong>에서 받는 승객을 고르고 쪽지나 아이템을 남겨 주세요.</li>
+        <li><strong>쪽지는 최대 16자</strong>까지 작성할 수 있습니다. 공백과 문장부호도 포함됩니다.</li>
+        <li><strong>조사로 얻은 개인 아이템만 전달할 수 있습니다.</strong> 내 소지품에서는 빠지며, 상대가 이미 가진 물품은 보낼 수 없습니다.</li>
+        <li><strong>받은 내용은 내 책상 → 확인하기</strong>에서 읽어 주세요. 기록은 수신자와 총괄만 볼 수 있습니다.</li>
+        <li><strong>별도의 조사 대기 시간은 없습니다.</strong> 편파적 이용·독점·괴롭힘은 경고 대상이니 서로 배려해 주세요.</li>
+      </ul>
+    </section>
+    <section class="ppass-card" id="ppass-dice" aria-labelledby="ppass-dice-title">
+      <h2 id="ppass-dice-title">06. 미니게임 사용법</h2>
+      <ul>
+        <li><strong>홈 → 미니게임</strong>에서 이용합니다. 롤플레잉 중 랜덤한 선택이 필요할 때 편하게 사용해 주세요.</li>
+        <li>결과가 나오면 <strong>결과 이미지를 복사해서 RP 스레드에 사용</strong>할 수 있습니다.</li>
+      </ul>
+      <details class="ppass-dice-screen"><summary>앱에서 다이스를 굴리는 화면 보기</summary><figure class="ppass-capture"><img src="resource/guide/app-dice.jpg" width="465" height="510" loading="lazy" alt="P-Pass 다이스 화면. 숫자 범위 1~2의 결과 2와 결과 이미지 복사 버튼."><figcaption>숫자 범위 또는 YES / NO를 선택한 뒤 굴리기를 눌러 주세요.</figcaption></figure></details>
+      <section class="ppass-rp" aria-labelledby="ppass-rp-title">
+        <h3 id="ppass-rp-title">RP 스레드 예시</h3>
+        <p class="ppass-rp-note">가상의 승객과 결과 이미지를 사용한 예시입니다.</p>
+        <ol class="ppass-posts">
+          <li class="ppass-post"><span class="ppass-avatar" aria-hidden="true">A</span><div class="ppass-post-body"><div class="ppass-post-author"><strong>승객 A</strong><span>@passenger_a · 1분 전</span></div><p>나와 그는 가위바위보를 했다. 누가 이겼나?</p><p class="ppass-rp-meta">(1 = 그가 이김 / 2 = 내가 이김으로 정하고, 1~2를 굴립니다.)</p></div></li>
+          <li class="ppass-post"><span class="ppass-avatar" aria-hidden="true">A</span><div class="ppass-post-body"><div class="ppass-post-author"><strong>승객 A</strong><span>@passenger_a · 방금</span></div><p class="ppass-reply">@passenger_a 님에게 답글</p><p>내가 이겼다. “오늘 음료는 네가 사는 거지?”</p><figure><img src="resource/guide/dice-example.svg" width="720" height="420" loading="lazy" alt="RP에 첨부한 설명용 결과 이미지. 숫자 범위 1~2, 결과 2."></figure></div></li>
+          <li class="ppass-post"><span class="ppass-avatar ppass-avatar-b" aria-hidden="true">B</span><div class="ppass-post-body"><div class="ppass-post-author"><strong>승객 B</strong><span>@passenger_b · 방금</span></div><p class="ppass-reply">@passenger_a 님에게 답글</p><p>“좋아. 대신 다음엔 안 봐준다.” 웃으며 음료 두 잔을 주문했다.</p></div></li>
+        </ol>
+      </section>
+      <div class="ppass-callout"><p>여러 번 굴려 유리한 값을 받아내는 것에 대한 책임은 추궁하지 않습니다.<br><strong>고신뢰의 러닝을 합시다.</strong></p></div>
+    </section>
+  </article>
+  <!-- P-Pass 가이드 본문 끝 -->
+</body>
+</html>

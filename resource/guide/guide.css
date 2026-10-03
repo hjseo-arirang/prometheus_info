@@ -1,0 +1,76 @@
+/* Standalone guide shell; colors and cards match index.html. */
+:root { --bg-base:#060913; --bg-surface:#0c1427; --bg-card:rgba(16,26,51,.75); --border-subtle:rgba(56,189,248,.18); --border-strong:rgba(56,189,248,.45); --primary:#38bdf8; --primary-dim:rgba(56,189,248,.12); --text-main:#f1f5f9; --text-sub:#94a3b8; --accent-danger:#f43f5e; --accent-gold:#fbbf24; }
+body.guide-page { margin:0; background:var(--bg-base); background-image:radial-gradient(ellipse at 50% 0%,rgba(14,116,144,.22),transparent 65%); color:var(--text-main); }
+
+    .ppass-guide-container {
+      box-sizing: border-box; width: 100%; max-width: 1040px; margin: 0 auto;
+      padding: clamp(20px, 4vw, 40px); border-radius: 16px;
+      background: var(--bg-base, #060913); color: var(--text-main, #f1f5f9);
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px; line-height: 1.8; word-break: keep-all; overflow-wrap: anywhere;
+    }
+    .ppass-guide-container * { box-sizing: border-box; }
+    .ppass-guide-container h1, .ppass-guide-container h2, .ppass-guide-container h3,
+    .ppass-guide-container p, .ppass-guide-container ul, .ppass-guide-container dl { margin: 0; }
+    .ppass-guide-container h1 { font-size: clamp(1.7rem, 5vw, 2.25rem); line-height: 1.35; margin: 8px 0 16px; }
+    .ppass-guide-container h2 { font-size: 1.25rem; line-height: 1.5; margin-bottom: 16px; }
+    .ppass-guide-container h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .ppass-guide-container p + p { margin-top: 12px; }
+    .ppass-guide-container strong, .ppass-guide-container dt { color: var(--text-main, #f1f5f9); font-weight: 700; }
+    .ppass-guide-container p, .ppass-guide-container li, .ppass-guide-container dd { color: var(--text-sub, #b1bdcf); }
+    .ppass-guide-container a { color: var(--primary, #38bdf8); text-underline-offset: 4px; }
+    .ppass-guide-container a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+    .ppass-guide-container ul { padding-left: 1.25em; }
+    .ppass-guide-container li + li { margin-top: 10px; }
+    .ppass-guide-container section { scroll-margin-top: 24px; }
+    .ppass-guide-container .ppass-eyebrow { color: var(--primary, #38bdf8); font-size: .8rem; letter-spacing: .14em; font-weight: 700; }
+    .ppass-guide-container .ppass-lead { max-width: 46em; }
+    .ppass-guide-container .ppass-nav { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 20px 0 28px; font-size: .9rem; }
+    .ppass-guide-container .ppass-card { margin-bottom: 20px; padding: clamp(18px, 3vw, 28px); background: var(--bg-card, #101a2b); border: 1px solid var(--border-subtle, #263950); border-radius: 12px; }
+    .ppass-guide-container .ppass-callout { padding: 16px 20px; margin: 18px 0 0; background: var(--primary-dim, #102b40); border-left: 3px solid var(--primary, #38bdf8); border-radius: 4px; }
+    .ppass-guide-container .ppass-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .ppass-guide-container .ppass-menu { display: grid; grid-template-columns: 145px minmax(0, 1fr); gap: 14px 20px; }
+    .ppass-guide-container dd { margin: 0; }
+    .ppass-guide-container .ppass-note { margin-top: 16px; font-size: .9rem; }
+    .ppass-guide-container .ppass-tag { display: inline-block; color: var(--primary, #38bdf8); font-size: .8rem; margin-bottom: 8px; }
+    @media (max-width: 600px) {
+      .ppass-guide-container .ppass-grid, .ppass-guide-container .ppass-menu { grid-template-columns: 1fr; }
+      .ppass-guide-container .ppass-menu { gap: 4px; }
+      .ppass-guide-container dd + dt { margin-top: 14px; }
+    }
+
+.ppass-guide-container { background:transparent; margin:24px auto 60px; }
+.ppass-guide-container > header { text-align:center; padding:32px 0 20px; }
+.ppass-guide-container .ppass-lead { margin-inline:auto; }
+.ppass-guide-container h1 { color:#fff; text-shadow:0 4px 20px rgba(0,0,0,.8); }
+.ppass-guide-container .ppass-eyebrow { display:inline-block; padding:6px 16px; border:1px solid var(--border-strong); border-radius:999px; background:var(--primary-dim); }
+.ppass-guide-container .ppass-nav { justify-content:center; }
+.ppass-guide-container .ppass-nav a { padding:7px 12px; border-radius:6px; border:1px solid var(--border-subtle); background:var(--bg-surface); text-decoration:none; }
+.ppass-guide-container .ppass-nav a:hover { background:var(--primary-dim); border-color:var(--primary); }
+.ppass-guide-container .ppass-card { padding:28px; margin-bottom:24px; box-shadow:0 8px 30px rgba(0,0,0,.4); }
+.ppass-guide-container .ppass-card > h2 { padding-bottom:16px; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,.08); color:#fff; }
+.ppass-guide-container figure { margin:24px 0; }
+.ppass-guide-container figure img { display:block; width:100%; height:auto; border-radius:8px; border:1px solid var(--border-subtle); }
+.ppass-guide-container figcaption { margin-top:8px; color:var(--text-sub); font-size:.85rem; line-height:1.65; }
+.ppass-guide-container .ppass-example { padding:20px; background:var(--bg-base); border:1px solid var(--border-subtle); border-radius:8px; }
+.ppass-guide-container .ppass-example figure { max-width:480px; margin:16px auto; }
+.ppass-guide-container .ppass-warning { border-left-color:var(--accent-danger); background:rgba(244,63,94,.08); }
+
+.ppass-guide-container .ppass-capture { max-width:760px; margin:16px auto 24px; }
+@media(max-width:600px) { .ppass-guide-container { margin-top:0; padding:16px; } .ppass-guide-container .ppass-card { padding:20px 16px; } }
+.ppass-guide-container .ppass-dice-screen { margin:16px 0 24px; }
+.ppass-guide-container .ppass-dice-screen summary { cursor:pointer; color:var(--primary); }
+.ppass-guide-container .ppass-dice-screen figure { max-width:360px; }
+.ppass-guide-container .ppass-rp { margin-top:24px; padding:20px; border:1px solid var(--border-subtle); border-radius:12px; background:var(--bg-base); }
+.ppass-guide-container .ppass-rp-note { font-size:.85rem; margin-bottom:20px; }
+.ppass-guide-container .ppass-posts { list-style:none; padding:0; margin:0; }
+.ppass-guide-container .ppass-post { display:grid; grid-template-columns:36px minmax(0,1fr); gap:12px; position:relative; margin:0; padding:0 0 24px; }
+.ppass-guide-container .ppass-post:not(:last-child)::before { content:""; position:absolute; left:17px; top:42px; bottom:6px; width:2px; background:var(--border-subtle); }
+.ppass-guide-container .ppass-post:last-child { padding-bottom:0; }
+.ppass-guide-container .ppass-avatar { display:grid; place-items:center; width:36px; height:36px; border-radius:50%; background:#17374a; color:#7dd3fc; font-weight:700; }
+.ppass-guide-container .ppass-avatar-b { background:#3b2e1b; color:#fbbf24; }
+.ppass-guide-container .ppass-post-author { display:flex; flex-wrap:wrap; gap:0 8px; align-items:baseline; }
+.ppass-guide-container .ppass-post-author span, .ppass-guide-container .ppass-rp-meta, .ppass-guide-container .ppass-reply { font-size:.8rem; color:var(--text-sub); }
+.ppass-guide-container .ppass-post-body > p:not(.ppass-rp-meta):not(.ppass-reply) { color:var(--text-main); margin-top:6px; }
+.ppass-guide-container .ppass-post figure { max-width:440px; margin:12px 0 0; }
+@media(max-width:600px) { .ppass-guide-container .ppass-rp { padding:14px 10px; } .ppass-guide-container .ppass-post { gap:8px; } }

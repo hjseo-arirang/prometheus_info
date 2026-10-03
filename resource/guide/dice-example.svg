@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">P-Pass 다이스 결과 예시</title>
+  <desc id="desc">숫자 범위 1~2에서 결과 2. 실제 굴림 기록이 아닌 설명용 이미지.</desc>
+  <rect width="720" height="420" fill="#101910"/>
+  <rect x="18" y="18" width="684" height="384" fill="none" stroke="#53654c" stroke-width="2"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="44" y="62" fill="#d5e796" font-size="22" font-weight="600">P-PASS · ONBOARD DICE</text>
+    <text x="674" y="62" fill="#afbaa3" font-size="16" text-anchor="end">설명용 예시</text>
+    <path d="M44 82H676" stroke="#53654c"/>
+    <text x="44" y="122" fill="#afbaa3" font-size="18">NUMBER · 1 — 2</text>
+    <text x="360" y="274" fill="#e4ebce" font-size="132" font-weight="700" text-anchor="middle">2</text>
+    <path d="M44 310H676" stroke="#53654c"/>
+    <text x="44" y="352" fill="#afbaa3" font-size="18">예시 승객</text>
+    <text x="676" y="352" fill="#afbaa3" font-size="18" text-anchor="end">2026년 10월 3일</text>
+    <text x="44" y="380" fill="#afbaa3" font-size="15">가위바위보 · 1 = 그가 이김 / 2 = 내가 이김</text>
+  </g>
+</svg>
