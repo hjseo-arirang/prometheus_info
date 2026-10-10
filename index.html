@@ -1417,6 +1417,44 @@
       box-shadow: 0 0 22px rgba(251, 191, 36, 0.3);
     }
 
+    .records-corrupted .panel-portrait {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border-radius: 50%;
+      background: #030712;
+    }
+
+    .records-corrupted .panel-avatar {
+      filter: url(#crewPortraitDistortion) grayscale(85%) contrast(1.3) brightness(0.7);
+      transform: rotate(-7deg) skew(-9deg, 4deg) scale(1.12);
+      transition: none;
+    }
+
+    .records-corrupted .chef-panel .panel-avatar {
+      transform: rotate(5deg) skew(12deg, -5deg) scale(1.12);
+    }
+
+    .records-corrupted .panel-portrait::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(transparent 38%, rgba(3, 7, 18, 0.8) 39% 43%, transparent 44%),
+        repeating-linear-gradient(transparent 0 3px, rgba(3, 7, 18, 0.35) 3px 5px);
+    }
+
+    .records-corrupted .captain-statement,
+    .records-corrupted .chef-career-list,
+    .records-corrupted .menu-dish,
+    .records-corrupted .menu-pairing {
+      font-family: monospace;
+      letter-spacing: 0.12em;
+      overflow-wrap: anywhere;
+    }
+
     .panel-meta h3 {
       font-size: 1.35rem;
       font-weight: 800;
@@ -1647,6 +1685,15 @@
 </head>
 
 <body>
+
+  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position: absolute;">
+    <defs>
+      <filter id="crewPortraitDistortion" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.015 0.065" numOctaves="2" seed="17" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
 
   <!-- 헤더 영역 -->
   <header class="hero-header">
@@ -2097,55 +2144,58 @@
     <!-- ─────────────────────────────────────────────────────────── -->
     <!-- 선장 인삿말 + 조리장 마르코의 특선 요리 (듀얼 패널) -->
     <!-- ─────────────────────────────────────────────────────────── -->
-    <div class="ship-feature-grid">
+    <div class="ship-feature-grid records-corrupted">
 
       <!-- 선장 아서 반더빌트 공식 환영사 (가로 100%) -->
       <div class="feature-panel captain-panel">
         <div class="panel-header">
-          <img src="resource/npc/arthur_face.png" alt="선장 아서 반더빌트" class="panel-avatar">
+          <div class="panel-portrait">
+            <img src="resource/npc/arthur_face.png" alt="훼손된 선장 아서 반더빌트의 얼굴 사진" class="panel-avatar">
+          </div>
           <div class="panel-meta">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 3px;">
-              <span style="background: rgba(56, 189, 248, 0.15); color: var(--primary); border: 1px solid var(--primary); font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; font-weight: 700; letter-spacing: 0.05em;">OFFICIAL WELCOME</span>
+              <span style="background: rgba(56, 189, 248, 0.15); color: var(--primary); border: 1px solid var(--primary); font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; font-weight: 700; letter-spacing: 0.05em;">--- ▒▒ ---</span>
             </div>
-            <h3>선장의 승선 공식 환영사</h3>
-            <span class="panel-role" style="color: var(--primary);">Captain Arthur Vanderbilt • 프로메테우스호 총괄 선장</span>
+            <h3 aria-label="훼손된 선장의 환영사">--- ▒▒▒ ---</h3>
+            <span class="panel-role" style="color: var(--primary);">--- / ▒▒▒ / ---</span>
           </div>
         </div>
         <div class="captain-statement">
-          "승객 여러분, 미지의 해역을 향해 출항하는 최첨단 쇄빙 여객선 <strong>프로메테우스호</strong>에 승선하신 것을 진심으로 환영합니다.<br><br>
-          본 함선은 세계 3대 미답의 해식 동굴 탐사라는 거대한 여정을 위해 특별 건조되었으며, 두터운 극지 빙하를 돌파하는 견고한 이중 쇄빙 장갑과 최첨단 항법 관제 시스템을 완비하고 있습니다.<br><br>
-          우리의 항해는 곧바로 험난한 해식 동굴로 향하지 않습니다. 본격적인 제1 해식 동굴 탐사에 돌입하기 전, 온화한 남부의 에메랄드 산호초 섬 일대를 먼저 유람하며 선상 축제와 푸른 바다의 낭만을 만끽하실 예정입니다. 
-          승객 여러분의 완벽한 휴식과 안락을 보장하고자 전원에게 1등 객실을 1인 1실로 정성껏 배정해 드렸으니, 마음 놓고 선내의 모든 특권을 누려 주십시오.<br><br>
-          승객 여러분의 안전과 평안한 항해를 위해 저 아서 반더빌트와 프로메테우스호 전 승무원은 한순간도 긴장을 늦추지 않고 최선을 다할 것을 약속드립니다."
-          <div class="captain-signature">— 선장 아서 반더빌트 (Arthur Vanderbilt)</div>
+          --- --- ▒▒▒ --- / --- ▒▒ --- ---<br><br>
+          ▒▒ --- --- --- ▒▒▒ / --- --- ▒▒ ---<br><br>
+          --- ▒▒▒ --- --- / ▒▒ --- ▒▒▒ --- ---<br><br>
+          --- --- / ▒▒▒ --- --- ▒▒ ---
+          <div class="captain-signature">— --- ▒▒▒ ---</div>
         </div>
       </div>
 
       <!-- 조리장 마르코의 선상 다이닝 & 오늘의 특선 요리 (가로 100%) -->
       <div class="feature-panel chef-panel">
         <div class="panel-header">
-          <img src="resource/npc/marco_face.png" alt="총괄 조리장 마르코 델가도" class="panel-avatar">
+          <div class="panel-portrait">
+            <img src="resource/npc/marco_face.png" alt="훼손된 총괄 조리장 마르코 델가도의 얼굴 사진" class="panel-avatar">
+          </div>
           <div class="panel-meta">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 3px;">
-              <span style="background: rgba(251, 191, 36, 0.15); color: var(--accent-gold); border: 1px solid var(--accent-gold); font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; font-weight: 700; letter-spacing: 0.05em;">CHEF'S TABLE</span>
+              <span style="background: rgba(251, 191, 36, 0.15); color: var(--accent-gold); border: 1px solid var(--accent-gold); font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; font-weight: 700; letter-spacing: 0.05em;">▒▒ --- ▒▒</span>
             </div>
-            <h3>총괄 조리장 마르코의 선상 다이닝</h3>
-            <span class="panel-role" style="color: var(--accent-gold);">Executive Head Chef Marco Delgado • 총괄 주방장</span>
+            <h3 aria-label="훼손된 마르코의 소개와 식단">▒▒▒ --- ▒▒ ---</h3>
+            <span class="panel-role" style="color: var(--accent-gold);">▒▒ / --- --- / ▒▒▒</span>
           </div>
         </div>
         <div class="chef-content-layout">
           <!-- 좌측: 조리장 마르코 프로필 & 경력 사항 (대사 일체 없음) -->
           <div class="chef-career-card">
             <div class="chef-career-title">
-              <span>👨‍🍳 CHEF PROFILE & CAREER</span>
+              <span>--- ▒▒▒ / ---</span>
             </div>
             <ul class="chef-career-list">
-              <li><strong>직책:</strong> 프로메테우스호 총괄 수석 셰프 (Executive Chef)</li>
-              <li><strong>학력:</strong> 르 꼬르동 블루 파리 (Le Cordon Bleu Paris) 수석 졸업</li>
-              <li><strong>경력:</strong> 대서양 횡단 초호화 크루즈 총괄 수석 셰프 15년 역임</li>
-              <li><strong>경력:</strong> 파리 미슐랭 3스타 프렌치 오트 퀴진 레스토랑 수석 주방장</li>
-              <li><strong>수상:</strong> 국제 해양 미식 페스티벌 '마스터 오브 씨푸드' 그랑프리 금상</li>
-              <li><strong>전문:</strong> 극지 항해 맞춤형 영양 설계 및 프라이빗 선상 만찬 총괄</li>
+              <li>--- / ▒▒▒ --- ---</li>
+              <li>▒▒ --- / --- ▒▒▒</li>
+              <li>--- --- ▒▒ / ---</li>
+              <li>▒▒▒ / --- --- ▒▒</li>
+              <li>--- ▒▒ --- / ---</li>
+              <li>▒▒ --- --- ▒▒▒</li>
             </ul>
           </div>
 
@@ -2153,27 +2203,27 @@
           <div class="menu-box">
             <div class="menu-header-bar">
               <div>
-                <span class="menu-theme-title">오늘의 셰프 특선 코스</span>
-                <span id="menu-theme-name" class="menu-theme-sub">(출항 기념 갈라 디너)</span>
+                <span class="menu-theme-title">--- ▒▒ ---</span>
+                <span id="menu-theme-name" class="menu-theme-sub">(--- ▒▒▒ ---)</span>
               </div>
-              <span id="menu-date-display" class="menu-date-badge">TODAY</span>
+              <span id="menu-date-display" class="menu-date-badge">----.--.--</span>
             </div>
             
             <div class="menu-item">
-              <span class="menu-course">[에피타이저]</span>
-              <span id="menu-appetizer" class="menu-dish">신선한 극지 훈제 연어 카르파초 & 허브 토스트</span>
+              <span class="menu-course">[---]</span>
+              <span id="menu-appetizer" class="menu-dish">--- ▒▒▒ --- / ---</span>
             </div>
             <div class="menu-item">
-              <span class="menu-course">[메인 코스]</span>
-              <span id="menu-main" class="menu-dish">최상급 블랙 앵거스 안심 스테이크와 트러플 매시포테이토</span>
+              <span class="menu-course">[▒▒▒]</span>
+              <span id="menu-main" class="menu-dish">▒▒ --- --- ▒▒▒</span>
             </div>
             <div class="menu-item">
-              <span class="menu-course">[디저트]</span>
-              <span id="menu-dessert" class="menu-dish">마다가스카르 바닐라 빈 판나코타 & 산딸기 쿨리</span>
+              <span class="menu-course">[---]</span>
+              <span id="menu-dessert" class="menu-dish">--- / ▒▒ --- ---</span>
             </div>
             <div class="menu-item">
-              <span class="menu-course">[페어링 음료]</span>
-              <span id="menu-pairing" class="menu-pairing">샤또 마고 2015 빈티지 또는 선상 스페셜 샴페인</span>
+              <span class="menu-course">[▒▒]</span>
+              <span id="menu-pairing" class="menu-pairing">▒▒▒ --- / --- ▒▒</span>
             </div>
           </div>
         </div>
@@ -2618,6 +2668,8 @@ function selectRoom(code, nameKo, nameEn, accessType, accessTag, desc) {
 
     // ─── 조리장 마르코의 일일 특선 요리 실시간 날짜 기반 자동 갱신 ───
     function updateDailyChefMenu() {
+      if (document.querySelector('.ship-feature-grid.records-corrupted')) return;
+
       const now = new Date();
       const month = now.getMonth() + 1; // 1 ~ 12
       const date = now.getDate();       // 1 ~ 31
